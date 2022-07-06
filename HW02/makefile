@@ -6,7 +6,7 @@ all: main.bin
 main.bin: main.s
 	$(CROSS-COMPILER)gcc -Wall -mcpu=cortex-m4 -nostartfiles -Ttext=0x0 main.s -o main.elf
 	$(CROSS-COMPILER)objcopy -O binary main.elf main.bin
-
+	$(CROSS-COMPILER)objdump -D main.elf
 qemu:
 	@echo
 	@echo "Press Ctrl+A and then press X to exit QEMU"
