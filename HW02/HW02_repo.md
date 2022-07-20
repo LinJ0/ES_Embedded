@@ -99,8 +99,11 @@ _start:
 ```
 - sp： `0x20000f0`
 - gdb：
+
 ![](https://i.imgur.com/b8vtG6M.png)
+
 - stack memory layout:
+
 ![](https://i.imgur.com/HpZQxGB.png)
 
 
@@ -110,8 +113,11 @@ _start:
 ```
 - sp： `0x20000e0`
 - gdb：
+
 ![](https://i.imgur.com/OEbY1EJ.png)
+
 - stack memory layout:
+
 ![](https://i.imgur.com/mVFcPCS.png)
 
 **Step2-3.** Push {r3} {r0} {r2} {r1}
@@ -123,8 +129,11 @@ _start:
 ```
 - sp： `0x20000d0`
 - gdb：
+
 ![](https://i.imgur.com/vqW3SEf.png)
+
 - stack memory layout:
+
 ![](https://i.imgur.com/skQm3zu.png)
 
 
@@ -138,9 +147,13 @@ _start:
 - r2：`1` 
 - r3：`4`
 - gdb：
+
 ![](https://i.imgur.com/Ml7uAHA.png)
+
 - stack memory layout：
+
 ![](https://i.imgur.com/9ScXoBT.png)
+
 ## Conclusion
 The result form gdb shows that the order of the registers in the push and the pop instructions does ==not== affect the excution results.
 ![](https://i.imgur.com/xPFTzeD.png)
