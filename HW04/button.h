@@ -3,6 +3,6 @@
 
 #define BUTTON_USER 0
 
-unsigned int button_init(unsigned int button);
+unsigned int button_read(unsigned int button);
 
 #endif

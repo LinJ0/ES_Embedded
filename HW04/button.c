@@ -20,11 +20,13 @@ void button_init(unsigned int button)
     SET_BIT(GPIO_BASE(GPIO_PORTA) + GPIOx_PUPDR_OFFSET, PUPDRy_1_BIT(button));
     CLEAR_BIT(GPIO_BASE(GPIO_PORTA) + GPIOx_PUPDR_OFFSET, PUPDRy_0_BIT(button));
 }
-/*
+
 unsigned int button_read(unsigned int button)
 {
     button_init(button);
 
-    while(!READ_BIT(GPIO_BASE(GPIO_PORTA) + GPIOx_IDR_OFFSET, IDRy_BIT(button)));
-    return 1;
-}*/
+    if(READ_BIT(GPIO_BASE(GPIO_PORTA) + GPIOx_IDR_OFFSET, IDRy_BIT(button)))
+        return 1;
+    else    
+        return 0;
+}
