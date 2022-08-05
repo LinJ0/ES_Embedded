@@ -27,10 +27,12 @@ The base address of **GPIOA** is 0x40020000 and the details are described in sec
 In addition, we will have to setup **RCC(Reset and clock control) register** to enable the clock for GPIOA.
 
 *2.3 Memory map*
+
 ![](https://i.imgur.com/UIncs5A.png)
 
 ### Step3. RCC - GPIO Enable
 *7.3.24 RCC register map*
+
 ![](https://i.imgur.com/CHjcolc.png)
 
 
@@ -44,6 +46,7 @@ Section 8.3 described that each of the GPIOs has four 32-bit memory-mapped contr
 - PUPDR
 
 *8.3 GPIO functional description*
+
 ![](https://i.imgur.com/jebkSTn.png)
 ![](https://i.imgur.com/sdAqRMF.png)
 
@@ -73,6 +76,7 @@ We want the pin GPIOA0 to be **input pull down**, so we have to configure the GP
 
 #### Step4-5. GPIO input control
 GPIOx_IDR is read-only.
+
 ![](https://i.imgur.com/5zfWhid.png)
 
 ## Methods
