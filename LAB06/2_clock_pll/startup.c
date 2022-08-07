@@ -44,6 +44,16 @@ void reset_handler(void)
 /**
  * 
  * set sysclk pll (168 MHz)
+ * 1. Turn on the HSE clock.
+ * 2. Wait until the HSE clock is stable.
+ * 3. Configure the main PLL parameters:
+ *   3-1. Selection of the HSI or HSE oscillator as PLL clock source
+ *   3-2. Configuration of division factors M, N, P
+ * 4. Turn on the main PLL
+ * 5. Wait until the main PLL is ready
+ * 6. Enable flash memory prefetch and set the latency
+ * 7. Select the main PLL as system clock source
+ * 8. Wait until the main PLL is used as system clock source
  * 
  */
 void set_sysclk_pll(void)
