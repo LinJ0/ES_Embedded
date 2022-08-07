@@ -1,1 +1,13 @@
 # ES_Embedded
+- Lecture 01 - Introduction to ARM Based Microcontrollers
+- Lecture 02 - Cortex-M4 and Thumb-2 Overview
+- Lecture 03 - Compilers, Assemblers, and Linkers
+- Lecture 04 - Getting Started with STM32F407
+- Lecture 05 - Startup Code: Data Initialization
+- Lecture 06 - Startup Code: Clock
+- Lecture 07 - Startup Code: Vector Table
+- Lecture 08 - Serial Communication: USART
+- Lecture 09 - Porting Newlib: malloc & printf
+- Lecture 10 - OS: User Mode and Kernel Mode
+- Lecture 11 - OS: System Call
+- Lecture 12 - OS: Context Switch
