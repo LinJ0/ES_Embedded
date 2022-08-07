@@ -88,6 +88,6 @@ void set_sysclk_pll(void)
 	WRITE_BITS(RCC_BASE + RCC_CFGR_OFFSET, SW_1_BIT, SW_0_BIT, 0b10);
 
 	//wait
-	while(READ_BIT(RCC_BASE + RCC_CFGR_OFFSET, SWS_1_BIT) && 
-             !READ_BIT(RCC_BASE + RCC_CFGR_OFFSET, SWS_0_BIT));
+	while(!READ_BIT(RCC_BASE + RCC_CFGR_OFFSET, SWS_1_BIT) || 
+             READ_BIT(RCC_BASE + RCC_CFGR_OFFSET, SWS_0_BIT));
 }
