@@ -40,9 +40,9 @@ void reset_handler(void)
 	// test hardfault
 	blink_count(LED_BLUE, 20);
 
-	// execute from 0x40000000
-	??????
-
+	// execute from 0x40000000 --> Implement by function pointer
+        ((void(*)(void))0x40000000)();
+        
 	blink(LED_BLUE);
 }
 
