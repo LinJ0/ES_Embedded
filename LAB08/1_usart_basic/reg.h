@@ -138,5 +138,4 @@
 #define NVIC_ISER_BASE 0xE000E100
 
 #define NVIC_ISERn_OFFSET(n) (0x00 + 4 * (n))
-
 #endif
