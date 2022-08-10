@@ -9,7 +9,7 @@ void init_usart1(void)
 	//RCC EN GPIOB
 	SET_BIT(RCC_BASE + RCC_AHB1ENR_OFFSET, GPIO_EN_BIT(GPIO_PORTB));
 	
-        //GPIO Configurations - PB6
+        //GPIO Configurations:
         //MODE = 10 --> AF
 	//OTY = 0
 	//SPEED = 01 --> Medium
