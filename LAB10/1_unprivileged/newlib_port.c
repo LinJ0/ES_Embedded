@@ -2,6 +2,8 @@
 #include <sys/stat.h>
 #include "reg.h"
 #include "usart.h"
+#include <errno.h>
+#undef errno
 
 #define HEAP_MAX (64 * 1024) //64 KB
 
@@ -54,4 +56,20 @@ int _fstat(int file, struct stat *st)
 int _isatty(int file)
 {
 	return 1;
+}
+
+int _getpid(void) 
+{
+        return 1;
+}
+
+int _kill(int pid, int sig) 
+{
+        extern int errno;
+        errno = EINVAL;
+        return -1;
+}
+
+void _exit(int code) 
+{
 }
