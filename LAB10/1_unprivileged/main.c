@@ -26,10 +26,6 @@ int main(void)
 	printf("[Kernel] Switch to unprivileged thread mode & start user task (psp_init = 0x%x).\r\n\n", (unsigned int)psp_init);
 
 	//start user task
-        //void (*user_task_ptr)(void) = user_task;
-        //printf("user_task_ptr = 0x%x\r\n", (unsigned int) user_task_ptr);
-        //printf("user_task = 0x%x \r\n", (unsigned int) &user_task);
-
 	start_user((uint32_t*)user_task, psp_init);
 
 	while (1) //should not go here
