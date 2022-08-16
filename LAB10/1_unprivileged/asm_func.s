@@ -37,8 +37,8 @@ start_user:
         str     r1, [r7, #4]
 
         //switch privilege from privileged access level to unprivileged access level
-        msr     psp, r1         //initial PSP. (must modify PSP before switch control reg)
-        mov     r2, 0b011       //FPCA = np FP extension, SPSEL = PSP, nPRIV = unprivilege
+        msr     psp, r1         //initial PSP
+        mov     r2, 0b011       //FPCA = no FP extension, SPSEL = PSP, nPRIV = unprivilege
         msr     control, r2
         ISB                     //flush pipeline
 
@@ -50,7 +50,7 @@ start_user:
 sw_priv:
         //void sw_priv(void);
 	//switch privilege from unprivileged access level to privileged access level
-        mov     r2, 0b010       //FPCA = np FP extension, SPSEL = PSP, nPRIV = privilege
+        mov     r2, 0b000       //FPCA = np FP extension, SPSEL = MSP, nPRIV = privilege
         msr     control, r2
         ISB                     //flush pipeline
         bx      lr
