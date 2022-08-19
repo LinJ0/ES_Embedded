@@ -37,7 +37,7 @@ int main(void)
 
 void user_task(void)
 {
-//	printf("[User] Try to print something.\r\n\n");
+	printf("[User] Try to print something.\r\n\n");
 	blink(LED_BLUE); //should not return
 }
 
@@ -51,6 +51,8 @@ void set_mpu(void)
 	REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(0x20000000, 1);
         REG(MPU_BASE + MPU_RASR_OFFSET) = MPU_RASR_VALUE(MPU_XN_ENABLE, MPU_AP_FULL_ACCESS, MPU_TYPE_SRAM, 0, MPU_REGION_SIZE_128KB);
 
+
+        /********   GPIOD  ********/
 	//set region 2: RCC_AHB1ENR, 32B, forbid execution, full access, enable all subregion
 	REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(RCC_BASE + RCC_AHB1ENR_OFFSET, 2);
         REG(MPU_BASE + MPU_RASR_OFFSET) = MPU_RASR_VALUE(MPU_XN_ENABLE, MPU_AP_FULL_ACCESS, MPU_TYPE_PERIPHERALS, 0, MPU_REGION_SIZE_32B);
@@ -59,8 +61,17 @@ void set_mpu(void)
 	REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(GPIO_BASE(GPIO_PORTD), 3);
         REG(MPU_BASE + MPU_RASR_OFFSET) = MPU_RASR_VALUE(MPU_XN_ENABLE, MPU_AP_FULL_ACCESS, MPU_TYPE_PERIPHERALS, 0, MPU_REGION_SIZE_32B);
 
-	//disable region 4 ~ 7
-        for (int region = 4; region<=7; region++)
+        /*******   USART1   *******/
+        //set region 4: RCC_APB2ENR, 32B, forbid execution, full access, enable all subregion
+        REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(RCC_BASE + RCC_APB2ENR_OFFSET, 4);
+        REG(MPU_BASE + MPU_RASR_OFFSET) = MPU_RASR_VALUE(MPU_XN_ENABLE, MPU_AP_FULL_ACCESS, MPU_TYPE_PERIPHERALS, 0, MPU_REGION_SIZE_32B);
+
+        //set region 5: USART1, 32B, forbid execution, full access, enable all subregion
+        REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(USART1_BASE, 5);
+        REG(MPU_BASE + MPU_RASR_OFFSET) = MPU_RASR_VALUE(MPU_XN_ENABLE, MPU_AP_FULL_ACCESS, MPU_TYPE_PERIPHERALS, 0, MPU_REGION_SIZE_32B);
+
+	//disable region 6 ~ 7
+        for (int region = 6; region<=7; region++)
 	{
 		REG(MPU_BASE + MPU_RBAR_OFFSET) = MPU_RBAR_VALUE(0x0, region);
                 REG(MPU_BASE + MPU_RASR_OFFSET) = 0; //disable region
