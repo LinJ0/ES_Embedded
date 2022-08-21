@@ -61,14 +61,14 @@ void svc_handler_c(uint32_t LR_value, uint32_t MSP_value)
 
         //initializing stack frame
 	uint32_t *stack_frame_ptr;
-	if (LR_value ^ (0 << 2)) //Test bit 2 of EXC_RETURN
+	if (LR_value & (1 << 2)) //Test bit 2 of EXC_RETURN
 	{
-		stack_frame_ptr = read_psp(); //if 1, stacking used PSP
+		stack_frame_ptr = (uint32_t *)read_psp(); //if 1, stacking used PSP
 		printf("[SVC Handler] Stacking used PSP: 0x%X \r\n\n", (unsigned int)stack_frame_ptr);
 	}
 	else
 	{
-		stack_frame_ptr = MSP_vlaue; //if 0, stacking used MSP
+		stack_frame_ptr = (uint32_t *)MSP_value; //if 0, stacking used MSP
 		printf("[SVC Handler] Stacking used MSP: 0x%X \r\n\n", (unsigned int)stack_frame_ptr);
 	}
 
@@ -88,5 +88,5 @@ void svc_handler_c(uint32_t LR_value, uint32_t MSP_value)
 		*stack_frame_ptr = stacked_r0 + stacked_r1;
 	else
 		//return 0
-		*stack_frame_ptr = 0;
+		*stack_frame_ptr = (uint32_t) 0;
 }
