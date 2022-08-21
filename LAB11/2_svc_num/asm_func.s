@@ -33,9 +33,11 @@ start_user:
 
 .global	sys_call
 sys_call:
-	??????
+	//int32_t sys_call(void);
+        svc #0x02 //call SVC function 2
 
 .type svc_handler, %function
 .global svc_handler
 svc_handler:
-	??????
+	mov     r0, lr
+        b       svc_handler_c
