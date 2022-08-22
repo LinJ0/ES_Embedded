@@ -13,7 +13,7 @@ int main(void)
 void setup_systick(uint32_t ticks)
 {
 	// set reload value
-	WRITE_BITS(SYST_BASE + SYST_RVR_OFFSET, SYST_RELOAD_23_BIT, SYST_RELOAD_0_BIT, ticks);
+	WRITE_BITS(SYST_BASE + SYST_RVR_OFFSET, SYST_RELOAD_23_BIT, SYST_RELOAD_0_BIT, (ticks - 1));
 
 	// uses external reference clock
 	CLEAR_BIT(SYST_BASE + SYST_CSR_OFFSET, SYST_CLKSOURCE_BIT);
