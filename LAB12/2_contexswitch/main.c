@@ -60,7 +60,7 @@ int main(void)
 	printf("[Kernel] Start in privileged thread mode.\r\n\n");
 
 	printf("[Kernel] Setting systick...\r\n\n");
-	setup_systick(168e6 / 8 / 1); //10 ms
+	setup_systick(168e6 / 8 / 0.5); //200 ms
 
 	//start user task
 	printf("[Kernel] Switch to unprivileged thread mode & start user task0 with psp.\r\n\n");
